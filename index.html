@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form Validation Page</title>
+<style type="text/css">
+body{
+	color: blue;
+	background-color: grey;
+	font-size: 22px;
+}
+form ul li input, select, span {
+float: left;
+margin-bottom: 10px;
+}
+
+form textarea {
+width: 350px;
+height: 150px;
+float: left;
+}
+
+[type="submit"] {
+clear: left;
+margin: 20px 0 0 230px;
+font-size:18px
+}
+
+p {
+margin-left: 70px;
+font-weight: bold;
+}
+h1 {
+margin-left: 70px;
+}
+form li {
+list-style: none;
+margin-bottom: 5px;
+}
+
+form ul li label{
+float: left;
+clear: left;
+width: 100px;
+text-align: right;
+margin-right: 10px;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:14px;
+}
+
+</style>
+</head>
+<body>
+	<script type="text/javascript">
+		function formValidation()
+{
+var name = document.registration.username;
+var add = document.registration.address;
+var School = document.registration.School;
+var email = document.registration.email;
+{
+if(allLetter(name))
+{
+if(alphanumeric(add))
+{ 
+if(countryselect(School))
+{
+if(ValidateEmail(email))
+
+{
+}
+} 
+}
+} 
+}
+
+return false;
+}
+
+
+function allLetter(name)
+{ 
+var letters = /^[A-Za-z]+$/;
+if(name.value.match(letters))
+{
+return true;
+}
+else
+{
+alert('Username must have alphabet characters only');
+name.focus();
+return false;
+}
+}
+function alphanumeric(add)
+{ 
+var letters = /^[0-9a-zA-Z]+$/;
+if(add.value.match(letters))
+{
+return true;
+}
+else
+{
+alert('User address must have alphanumeric characters only');
+add.focus();
+return false;
+}
+}
+function countryselect(School)
+{
+if(School.value == "Default")
+{
+alert('Select your School from the list');
+School.focus();
+return false;
+}
+else
+{
+return true;
+}
+}
+function ValidateEmail(email)
+{
+var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+if(email.value.match(mailformat))
+{
+	alert('Form succesfully submitted!');
+	window.location.reload()
+return true;
+}
+else
+{
+alert("You have entered an invalid email address!");
+email.focus();
+return true;
+}
+}
+
+
+
+
+
+	</script>
+<body>
+	<h1>Personal Information Formation</h1>
+	<form name='registration' onSubmit="return formValidation();">
+<ul>
+<li><label for="username">Name:</label></li>
+<li><input type="text" name="username" size="50" /></li>
+<li><label for="email">Email:</label></li>
+<li><input type="text" name="email" size="50" /></li>
+<li><label for="address">Address:</label></li>
+<li><input type="text" name="address" size="50" /></li>
+<li><label for="School">School:</label></li>
+<li><select name="School">
+<option selected="" value="Default">(School)</option>
+<option value="AF">Lancers International School</option>
+<option value="AL">Pathways School</option>
+<option value="DZ">DPS International School</option>
+<option value="AS">GD Goenka Global School</option>
+<option value="AD">Scottish High International School</option>
+</select></li>
+<li><label for="desc">About:</label></li>
+<li><textarea name="desc" id="desc"></textarea></li>
+<li><input type="submit" name="submit" value="Submit"></li>
+</ul>
+</form>
+</body>
+
+</body>
+</html>
